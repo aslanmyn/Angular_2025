@@ -11,17 +11,17 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./app.css']
 })
 export class App {
-  // 1) Интерполяция
+
   title = 'Angular homework';
   mission = 'About Us page with Angular data bindings';
   author = 'Aslan Mustafaev';
 
-  // 2) Property Binding
+
   photoUrl =
     'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop';
   isButtonDisabled = false;
 
-  // 3) Event Binding
+
   likes = 0;
   showExtra = false;
 
@@ -29,7 +29,7 @@ export class App {
   toggleExtra(): void { this.showExtra = !this.showExtra; }
   toggleDisable(): void { this.isButtonDisabled = !this.isButtonDisabled; }
 
-  // 4) Two-Way Binding
+
   name = '';
   email = '';
   showThanks = false;
@@ -48,7 +48,7 @@ export class App {
     this.showThanks = false;
   }
 
-  // для mailto ссылки в контактах
+
   get emailLink(): string {
     return 'mustafaev.aslan55@gmail.com';
   }

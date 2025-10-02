@@ -6,7 +6,7 @@
   </p>
 
   <div class="team">
-    <!-- Property Binding: src + alt; динамический класс по количеству лайков -->
+
     <img
       class="team-photo"
       [src]="photoUrl"
@@ -23,15 +23,15 @@
       <div class="controls">
         <span class="likes">👍 Likes: <b>{{ likes }}</b></span>
 
-        <!-- Event Binding: инкремент лайков -->
+
         <button class="btn" (click)="like()">Like</button>
 
-        <!-- Event Binding: показать/скрыть сообщение -->
+
         <button class="btn outline" (click)="toggleExtra()">
           {{ showExtra ? 'Hide message' : 'Show message' }}
         </button>
 
-        <!-- Property Binding: disabled переключается кнопкой -->
+
         <button class="btn warn" [disabled]="isButtonDisabled" (click)="toggleDisable()">
           {{ isButtonDisabled ? 'Disabled' : 'Make me Disabled' }}
         </button>
@@ -39,7 +39,7 @@
     </div>
   </div>
 
-  <!-- Показываем дополнительное сообщение по флагу -->
+
   <p *ngIf="showExtra" class="extra">Thank you for visiting! 🌟</p>
 
   <h2>Contacts</h2>
@@ -63,7 +63,7 @@
   </ul>
 </div>
 
-<!-- Two-way Binding: имя + превью приветствия -->
+
 <div class="card">
   <h2>Greeting</h2>
   <label class="field">
@@ -73,7 +73,7 @@
   <p class="preview" *ngIf="name">Hello, <strong>{{ name }}</strong> 👋</p>
 </div>
 
-<!-- Two-way Binding: email + Subscribe с disabled по валидности -->
+
 <div class="card">
   <h2>Subscribe</h2>
   <label class="field">
