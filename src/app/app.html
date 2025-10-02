@@ -1,15 +1,94 @@
 <div class="about-container">
   <h1>{{ title }}</h1>
 
-  <p>
-    Welcome to our Angular project!
-    My name is Aslan Mustafaev
+  <p class="mission">
+    {{ mission }}
   </p>
+
+  <div class="team">
+    <!-- Property Binding: src + alt; динамический класс по количеству лайков -->
+    <img
+      class="team-photo"
+      [src]="photoUrl"
+      [alt]="title + ' photo'"
+      [class.highlight]="likes >= 5"
+    />
+
+    <div class="team-info">
+      <p>
+        Welcome to our Angular project!<br />
+        My name is <strong>{{ author }}</strong>
+      </p>
+
+      <div class="controls">
+        <span class="likes">👍 Likes: <b>{{ likes }}</b></span>
+
+        <!-- Event Binding: инкремент лайков -->
+        <button class="btn" (click)="like()">Like</button>
+
+        <!-- Event Binding: показать/скрыть сообщение -->
+        <button class="btn outline" (click)="toggleExtra()">
+          {{ showExtra ? 'Hide message' : 'Show message' }}
+        </button>
+
+        <!-- Property Binding: disabled переключается кнопкой -->
+        <button class="btn warn" [disabled]="isButtonDisabled" (click)="toggleDisable()">
+          {{ isButtonDisabled ? 'Disabled' : 'Make me Disabled' }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Показываем дополнительное сообщение по флагу -->
+  <p *ngIf="showExtra" class="extra">Thank you for visiting! 🌟</p>
 
   <h2>Contacts</h2>
   <ul>
-    <li>Email: <a href="mailto:mustafaev.aslan55">mustafaev.aslan55@gmail.com</a></li>
-    <li>Telegram: <a href="https://t.me/yourteam" target="_blank">@aslanmyn</a></li>
-    <li>GitHub: <a href="https://github.com/your-repo" target="_blank">https://github.com/aslanmyn/Angular_2025</a></li>
+    <li>
+      Email:
+      <a [href]="'mailto:' + emailLink">
+        {{ emailLink }}
+      </a>
+    </li>
+    <li>
+      Telegram:
+      <a href="https://t.me/yourteam" target="_blank">@aslanmyn</a>
+    </li>
+    <li>
+      GitHub:
+      <a href="https://github.com/your-repo" target="_blank">
+        https://github.com/aslanmyn/Angular_2025
+      </a>
+    </li>
   </ul>
+</div>
+
+<!-- Two-way Binding: имя + превью приветствия -->
+<div class="card">
+  <h2>Greeting</h2>
+  <label class="field">
+    <span>Your name</span>
+    <input type="text" [(ngModel)]="name" placeholder="Type your name..." />
+  </label>
+  <p class="preview" *ngIf="name">Hello, <strong>{{ name }}</strong> 👋</p>
+</div>
+
+<!-- Two-way Binding: email + Subscribe с disabled по валидности -->
+<div class="card">
+  <h2>Subscribe</h2>
+  <label class="field">
+    <span>Email</span>
+    <input type="email" [(ngModel)]="email" placeholder="you@example.com" />
+  </label>
+
+  <div class="row">
+    <button class="btn primary" (click)="subscribe()" [disabled]="!emailValid">
+      Subscribe
+    </button>
+    <button class="btn outline" (click)="reset()">Reset</button>
+  </div>
+
+  <p class="success" *ngIf="showThanks">
+    Thanks, <strong>{{ email }}</strong>, we’ll be in touch! ✅
+  </p>
 </div>
